@@ -18,7 +18,7 @@ import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 
 /*
 * @author szc
-* @function 初始化UniverImageLoader
+* @function 初始化UniverImageLoader   并且加载网络图片
 * */
 public class ImageLoaderManager {
 
@@ -48,6 +48,9 @@ public class ImageLoaderManager {
     *
     * */
     private ImageLoaderManager(Context context){
+        /*
+        * 为我们的ImageLoader去配置参数
+        * */
         ImageLoaderConfiguration configuration = new ImageLoaderConfiguration
                 .Builder(context)
                 .threadPoolSize(THREAD_COUNT)//配置图片下载线程的最大数量
@@ -71,6 +74,9 @@ public class ImageLoaderManager {
 *
 * */
     private DisplayImageOptions getDefaultOptions() {
+        /*
+        * 为我们现图片的时候去进行一个配置
+        * */
         DisplayImageOptions options = new DisplayImageOptions.Builder()
                 .showImageForEmptyUri(R.drawable.xadsdk_ad_loading)//图片为空的时候  显示R.drawable.page_loading_01
                 .showImageOnFail(R.drawable.xadsdk_ad_loading)//图片下载失败的时候
