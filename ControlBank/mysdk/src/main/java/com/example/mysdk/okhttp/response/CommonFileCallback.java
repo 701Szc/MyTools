@@ -136,11 +136,15 @@ public class CommonFileCallback implements Callback {
         File path = new File(localFilePath.substring(0,
                 localFilePath.lastIndexOf("/") + 1));
         File file = new File(localFilePath);
+        //地址不存在
         if (!path.exists()) {
+            //新建目录
             path.mkdirs();
         }
+        //文件不存在
         if (!file.exists()) {
             try {
+                //创建file
                 file.createNewFile();
             } catch (IOException e) {
                 e.printStackTrace();

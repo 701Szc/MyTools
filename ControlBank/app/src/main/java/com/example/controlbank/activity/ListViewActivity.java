@@ -15,19 +15,26 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.example.controlbank.R;
 import com.example.controlbank.activity.base.BaseActivity;
+import com.example.controlbank.activity.detail.AutoScrollViewPageActivity;
+import com.example.controlbank.activity.detail.AutoScrollViewPagerActivity;
 import com.example.controlbank.activity.detail.ButtonActivity;
+import com.example.controlbank.activity.detail.DialogActivity;
 import com.example.controlbank.activity.detail.ImageActivity;
 import com.example.controlbank.activity.detail.TextActivity;
+import com.example.controlbank.activity.detail.VideoPlayActivity;
 import com.example.controlbank.activity.detail.ViewPagerActivity;
 
 public class ListViewActivity extends BaseActivity {
 
     private ListView listView;
-    private String[] data = {"Button","TextView","ImageView","ViewPager"};
+    private String[] data = {"Button","TextView","ImageView","ViewPager","AutoScrollViewPagers","VideoPlay","Dialog"};
     private final int BUTTONACTIVITY = 0;
     private final int TEXTVIEWACTIVITY = 1;
     private final int IMAGEVIEE  = 2;
-    private final int VIEWPAGER = 3;
+    private final int VIEWPAGER = 3;//横向滚动view
+    private final int AUTOSCROLLVIEWPAGER = 4;//自动横向滚动
+    private final int VIDEOPLAY = 5;//自动横向滚动
+    private final int DIALOG = 6;//自动横向滚动
 
 
 
@@ -61,6 +68,21 @@ public class ListViewActivity extends BaseActivity {
                     case VIEWPAGER:
                         Intent intent_viewpager = new Intent(ListViewActivity.this, ViewPagerActivity.class);
                         startActivity(intent_viewpager);
+                        break;
+
+                    case AUTOSCROLLVIEWPAGER:
+                        Intent intent_autoViewPager = new Intent(ListViewActivity.this, AutoScrollViewPagerActivity.class);
+                        startActivity(intent_autoViewPager);
+                        break;
+
+                    case VIDEOPLAY:
+                        Intent intent_VideoPLay = new Intent(ListViewActivity.this, VideoPlayActivity.class);
+                        startActivity(intent_VideoPLay);
+                        break;
+
+                    case DIALOG:
+                        Intent intent_Dialog = new Intent(ListViewActivity.this, DialogActivity.class);
+                        startActivity(intent_Dialog);
                         break;
                 }
             }

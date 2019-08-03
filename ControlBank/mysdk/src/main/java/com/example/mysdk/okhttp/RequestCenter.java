@@ -4,6 +4,7 @@ import com.example.mysdk.module.AdInstance;
 import com.example.mysdk.okhttp.listener.DisposeDataHandle;
 import com.example.mysdk.okhttp.listener.DisposeDataListener;
 import com.example.mysdk.okhttp.request.CommonRequest;
+import com.example.mysdk.okhttp.request.RequestParams;
 
 /**
  * Created by renzhiqiang on 16/10/27.
@@ -20,4 +21,6 @@ public class RequestCenter {
         CommonOkHttpClient.post(CommonRequest.createPostRequest(url, null),
                 new DisposeDataHandle(listener, AdInstance.class));
     }
+
+
 }

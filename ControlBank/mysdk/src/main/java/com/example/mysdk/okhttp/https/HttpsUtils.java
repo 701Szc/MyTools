@@ -122,6 +122,7 @@ public class HttpsUtils {
     }
 
     private static class MyTrustManager implements X509TrustManager {
+        //添加一个信任管理器
         private X509TrustManager defaultTrustManager;
         private X509TrustManager localTrustManager;
 
@@ -154,8 +155,10 @@ public class HttpsUtils {
 
 
     public static SSLSocketFactory initSSLSocketFactory() {
+        //创建加密上下文
         SSLContext sslContext = null;
         try {
+            //与服务器保持一致的算法类型  TSL或者SSL
             sslContext = SSLContext.getInstance("SSL");
             X509TrustManager[] xTrustArray = new X509TrustManager[]
                     {initTrustManager()};

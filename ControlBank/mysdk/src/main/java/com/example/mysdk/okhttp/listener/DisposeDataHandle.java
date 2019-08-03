@@ -1,7 +1,7 @@
 package com.example.mysdk.okhttp.listener;
 
 /**
- * @author vision
+ * @author Szc
  *
  */
 public class DisposeDataHandle
@@ -20,7 +20,7 @@ public class DisposeDataHandle
 		this.mListener = listener;
 		this.mClass = clazz;
 	}
-
+	//source: 用于处理文件时  文件保存地址
 	public DisposeDataHandle(DisposeDataListener listener, String source)
 	{
 		this.mListener = listener;

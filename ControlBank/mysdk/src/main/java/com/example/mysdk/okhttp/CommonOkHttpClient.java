@@ -23,11 +23,13 @@ import okhttp3.Response;
  * @function 用来发送get, post请求的工具类，包括设置一些请求的共用参数
  */
 public class CommonOkHttpClient {
-    private static final int TIME_OUT = 30;
+    private static final int TIME_OUT = 30; //超时参数
     private static OkHttpClient mOkHttpClient;
-
+    //为我们的client去配置参数
     static {
+        //创建我client对象的构建者
         OkHttpClient.Builder okHttpClientBuilder = new OkHttpClient.Builder();
+        //https支持
         okHttpClientBuilder.hostnameVerifier(new HostnameVerifier() {
             @Override
             public boolean verify(String hostname, SSLSession session) {
@@ -43,20 +45,22 @@ public class CommonOkHttpClient {
             public Response intercept(Chain chain) throws IOException {
                 Request request = chain.request()
                         .newBuilder()
-                        .addHeader("User-Agent", "Imooc-Mobile") // 标明发送本次请求的客户端
+                        .addHeader("User-Agent", "Baidu-Mobile") // 标明发送本次请求的客户端
                         .build();
                 return chain.proceed(request);
             }
         });
         okHttpClientBuilder.cookieJar(new SimpleCookieJar());
-        okHttpClientBuilder.connectTimeout(TIME_OUT, TimeUnit.SECONDS);
-        okHttpClientBuilder.readTimeout(TIME_OUT, TimeUnit.SECONDS);
-        okHttpClientBuilder.writeTimeout(TIME_OUT, TimeUnit.SECONDS);
-        okHttpClientBuilder.followRedirects(true);
+        //为构建者提供超时时间
+        okHttpClientBuilder.connectTimeout(TIME_OUT, TimeUnit.SECONDS);//连接超时
+        okHttpClientBuilder.readTimeout(TIME_OUT, TimeUnit.SECONDS);//读超时时间
+        okHttpClientBuilder.writeTimeout(TIME_OUT, TimeUnit.SECONDS);//写超时时间
+        okHttpClientBuilder.followRedirects(true);//允许重定向
         /**
-         * trust all the https point
+         * trust all the https point    加密协议
          */
         okHttpClientBuilder.sslSocketFactory(HttpsUtils.initSSLSocketFactory(), HttpsUtils.initTrustManager());
+        //生成client对象
         mOkHttpClient = okHttpClientBuilder.build();
     }
 

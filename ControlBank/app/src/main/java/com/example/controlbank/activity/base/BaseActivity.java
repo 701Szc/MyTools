@@ -1,5 +1,7 @@
 package com.example.controlbank.activity.base;
 
+import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -14,6 +16,7 @@ public class BaseActivity extends AppCompatActivity {
      * 输出日志，所需tag
      * */
     public String TAG;
+    protected Context mContext;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

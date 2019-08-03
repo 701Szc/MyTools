@@ -20,7 +20,7 @@ public class CommonRequest {
      *
      * @param url
      * @param params
-     * @return
+     * @return 返回一个创建好的request对象
      */
     public static Request createPostRequest(String url, RequestParams params) {
         return createPostRequest(url, params, null);
@@ -33,9 +33,12 @@ public class CommonRequest {
      * @return
      */
     public static Request createPostRequest(String url, RequestParams params, RequestParams headers) {
+        //创建FormBody
         FormBody.Builder mFormBodyBuild = new FormBody.Builder();
+        //为FormBody添加参数
         if (params != null) {
             for (Map.Entry<String, String> entry : params.urlParams.entrySet()) {
+                //将请求参数逐一遍历添加到我们的请求构建类中
                 mFormBodyBuild.add(entry.getKey(), entry.getValue());
             }
         }
@@ -46,11 +49,13 @@ public class CommonRequest {
                 mHeaderBuild.add(entry.getKey(), entry.getValue());
             }
         }
+        //获取真正的请求体对象
         FormBody mFormBody = mFormBodyBuild.build();
         Headers mHeader = mHeaderBuild.build();
-        Request request = new Request.Builder().url(url).
-                post(mFormBody).
-                headers(mHeader)
+        Request request = new Request.Builder()
+                .url(url)
+                .post(mFormBody)
+                .headers(mHeader)
                 .build();
         return request;
     }
@@ -99,7 +104,7 @@ public class CommonRequest {
     /**
      * @param url
      * @param params
-     * @return
+     * @return 通过传入的参数返回一个Get类型的请求  拼接出一个url
      */
     public static Request createMonitorRequest(String url, RequestParams params) {
         StringBuilder urlBuilder = new StringBuilder(url).append("&");

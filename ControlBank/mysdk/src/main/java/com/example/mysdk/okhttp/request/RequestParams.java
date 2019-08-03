@@ -7,6 +7,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * @author vision
+ * @function 封装所有的请求参数到HashMap中
  */
 public class RequestParams {
 
